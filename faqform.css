@@ -1,0 +1,98 @@
+/** {
+	border: 1px solid red;
+}
+*/
+body {
+    font-family: 'Vollkorn', sans-serif;	
+    font-size: 14px;
+    padding-top: 60px;
+  }
+  
+ .brand {
+ 	font-size: 48px;
+ }
+
+.container > footer p {
+	margin: 0 auto;
+}
+  
+.container {
+	margin: 0 auto;
+}
+
+.sidebar-right {
+}
+
+.brand {
+	/*margin: 0 auto;*/
+}
+
+input, textarea {
+    font-family: 'Vollkorn', sans-serif;	
+    font-size: 18px;
+}
+
+.stats {
+	width: 50px;
+	height: 10px;
+	position: relative;
+}
+
+.statsnumber {
+	position: absolute;;
+	left: 93px;
+	top: 21px;
+	width: 92px;
+	height: 10px;
+	display: table;
+}
+
+.statsnumber p {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.arrow-up {
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparant;
+	border-right: 5px solid transparant;
+	border-bottom: 5px solid transparant;
+1G}
+
+.questions ul {
+	list-style-type: none;
+	margin-left: 0;
+}
+
+.question li {
+	border: 1px dotted #999;
+	border-top: none;
+	border-width: 1px 0;
+}
+
+.question li a {
+	color: #990000;
+	display: block;
+    font: bold 120% Vollkorn, sans-serif;
+    padding: 0px;
+    text-decoration: none;
+}
+
+.question li a:hover {
+        background: #ffffcc;
+}
+
+.question a em { 
+        color: #333;
+        display: block;
+        font: normal 85% Vollkorn, sans-serif;
+        line-height: 125%; 
+}
+
+.question a span {
+        color: #125F15;
+        font: normal 70% Vollkorn, sans-serif;
+        line-height: 150%;
+}
