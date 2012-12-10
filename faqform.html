@@ -1,7 +1,8 @@
 <head>
   <title>faqform</title>
-  <link rel="stylesheet" href="./faqform.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Vollkorn">
+  <script src="/epiceditor/js/epiceditor.min.js"></script>
 </head>
 
 <body>
@@ -11,48 +12,6 @@
 <template name="home">
   	{{> nav}}
   	{{> faq}}
-</template>
-
-<template name="bar">
-	{{>nav}}
-	<div class="container">
-		<div class="row">
-			<div class="offset1 span10">
-				<div class="question">
-			   	<h5>{{question.q}}</h5>
-			   	<ul>
-            {{#each question.answers}}
-            <li>
-			   		{{user}} said: {{answer}} at {{created_at}}.
-            </li>
-            {{/each}}
-          </ul>
-			   	</p>
-          <b>Tags</b>
-          <p>
-
-            {{#each question.tags}}
-            {{name}}
-            {{/each}}
-          </p>
-			   	<!--a class="btn" href="/edit/{{question._id}}">edit</a> 
-		      <a href="/">
-		        <button class="delete-button btn btn-danger" type="button">delete</button>
-		      </a-->
-			  </div> 
-        <div class="answer-box">
-          <p>Answer this question:</p>
-
-          <textarea rows=12 required class="span10"></textarea>
-          <a href="/">
-            <button class="save-button btn btn-warn pull-right" type="button">Answer</button>
-          </a>
-        </div> 
-        </div>
-
-			</div>
-		</div>
-	</div>
 </template>
 
 <template name="nav">
@@ -72,65 +31,66 @@
 
 <template name="faq">
   <div class="container">
-    <div class="faq">
-      {{> sidebarleft}}
-      {{> faqbrowser}}
-      {{> sidebar}}
+    <div class="row">
+      <div class="span2">
+        {{>sidebarleft}}
+      </div>
+      <div class="span8">
+        {{> faqbrowser}}
+      </div>
+      <div class="span2">
+        {{> sidebar}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="sidebarleft">
+  <ul>
+    {{#each tags}}
+      <li> {{tags}} </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="faqbrowser">
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active"> <a href="#tab-latest-questions" data-toggle="tab" >Latest</a> </li>
+      <li> 
+        <a href="#tab-most-interesting" data-toggle="tab" >Most Interesting</a> 
+      </li>
+      <li> 
+        <a href="#unanswered" data-toggle="tab" >Unanswered</a> 
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-latest-questions">
+      <div class="questions">
+        <ul>
+          {{#each questions}}
+          {{> q}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="tab-pane " id="tab-most-interesting">
+      <p>most interesting go here</p>
+    </div>
+    <div class="tab-pane" id="tab-unanswered">
+      <p>unanswered go here</p>
+    </div>
+    <div class="tab-pane" id="tab-search">
+      <p>other stuff here </p>
     </div>
   </div>
 </template>
 
 <template name="sidebar">
-  <div class="span1">
-    <a href="/ask">
-      <button class="btn btn-primary" type="button">Ask a Question</button>
-    </a>
-  </div>
-</template>
-
-<template name="sidebarleft">
-	<div class="span2">
-    <ul>
-      {{#each tags}}
-      <li> {{tags}}</li>
-      {{/each}}
-    </ul>
-  </div>
-</template>
-
-<template name="faqbrowser">
-  <div class="span8">
-    <div class="tabbable">
-      <ul class="nav nav-tabs">
-        <li class="active"> <a href="#tab-latest-questions" data-toggle="tab" >Latest</a> </li>
-        <li> 
-          <a href="#tab-most-interesting" data-toggle="tab" >Most Interesting</a> 
-        </li>
-        <li> 
-          <a href="#unanswered" data-toggle="tab" >Unanswered</a> 
-        </li>
-      </ul>
-    </div>
-    <div class="tab-content">
-      <div class="tab-pane active" id="tab-latest-questions">
-        <div class="questions">
-          <ul>
-            {{#each questions}}
-            {{> q}}
-            {{/each}}
-          </ul>
-        </div>
-      </div>
-      <div class="tab-pane " id="tab-most-interesting">
-        <p>most interesting go here</p>
-      </div>
-      <div class="tab-pane" id="tab-unanswered">
-        <p>unanswered go here</p>
-      </div>
-      <div class="tab-pane" id="tab-search">
-      </div>
-    </div>
-  </div>
+  <a href="/ask">
+    <button class="btn btn-primary" type="button">Ask a Question</button>
+  </a>
 </template>
 
 <template name="q">
@@ -151,20 +111,39 @@
   </div>
 </template>
 
-<template name="stats">
-	<div class="stats">
-		<p> 0 votes</p>
-	</div>
+
+<template name="bar">
+  {{>nav}}
+  <div class="container">
+    <div class="row">
+      <div class="offset1 span10">
+        <div class="question">
+          <h5>{{question.q}}</h5>
+          <ul>
+            {{#each question.answers}}
+            <li>
+            {{user}} said: {{answer}} at {{created_at}}.
+            </li>
+            {{/each}}
+          </ul>
+          </p>
+          <b>Tags</b>
+          <p>
+            {{#each question.tags}}
+            {{name}}
+            {{/each}}
+          </p>
+        </div> 
+        <div class="row">
+        <div class="answer-box">
+          <a href="/" id="showEditor" class="answer-button btn btn-primary pull-right">Answer</a>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
 </template>
 
-<template name="about">
-	{{> nav}}
-	<div class="container">
-	<p class="lead">
-		We are Faqform. Rocking Real Documentation!
-	</p>
-</div>
-</template>
 
 <template name="ask">
 	{{> nav}}

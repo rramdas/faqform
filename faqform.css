@@ -2,29 +2,43 @@
 	border: 1px solid red;
 }
 */
+
+.epiceditors {
+
+    height: 349px;
+  border:1px solid #000;
+  box-shadow: rgba(0, 0, 0, 0.75) 0 2px 5px;
+  border-radius: 3px;
+  margin-top: 20px;
+  
+}
 body {
     font-family: 'Vollkorn', sans-serif;	
     font-size: 14px;
-    padding-top: 60px;
   }
   
  .brand {
  	font-size: 48px;
  }
 
-.container > footer p {
+/*.container > footer p {
 	margin: 0 auto;
-}
+}*/
   
 .container {
 	margin: 0 auto;
+}
+
+.main-container {
+	margin-top: 60px;
+	/*margin: 0 auto;*/
 }
 
 .sidebar-right {
 }
 
 .brand {
-	/*margin: 0 auto;*/
+	margin: 0 auto;
 }
 
 input, textarea {
@@ -32,34 +46,6 @@ input, textarea {
     font-size: 18px;
 }
 
-.stats {
-	width: 50px;
-	height: 10px;
-	position: relative;
-}
-
-.statsnumber {
-	position: absolute;;
-	left: 93px;
-	top: 21px;
-	width: 92px;
-	height: 10px;
-	display: table;
-}
-
-.statsnumber p {
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-}
-
-.arrow-up {
-	width: 0;
-	height: 0;
-	border-left: 5px solid transparant;
-	border-right: 5px solid transparant;
-	border-bottom: 5px solid transparant;
-1G}
 
 .questions ul {
 	list-style-type: none;

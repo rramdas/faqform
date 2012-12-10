@@ -8,36 +8,76 @@ Session.set('question_id', null);
 if (Meteor.isClient) {
 
 
+  Session.set("btnStatus", false);
+
   Meteor.autosubscribe(function () {
     Meteor.subscribe('faqs');
   });
 
   Template.faqbrowser.questions = function () {
     return Faqs.find({});
-  }
+  };
 
   Template.sidebarleft.tags = function () {
     return Tags.find({});
-  }
+  };
 
   Template.bar.question = function () {
     var question = Faqs.findOne(Session.get('question_id'));
-    var answers  = Faqs.find( {})
+    var answers  = Faqs.find( {});
     return question ;
-  }
+  };
 
   Template.ask.question = function () {
-    if (Session.get('question_id')) 
+    if (Session.get('question_id'))
       var question = Faqs.findOne(Session.get('question_id'));
-      return question ;
-  }
+      return question;
+  };
 
   Template.bar.events ({
-    'click button.answer-question': function(e) {
+
+    'click a.answer-button': function(e) {
+
       e.preventDefault();
-      var editor = new EpicEditor().load();
+
+      var answerButton = document.getElementById('showEditor');
+
+      var opts = {
+        container: 'epiceditor',
+        basePath: '/client/epiceditor',
+        parser: marked,
+        file : {
+          name: 'epiceditor',
+          defaultContent: "Know the answer, write it down...",
+          focusOnLoad: true,
+          autosave: 100
+        },
+        theme: {
+          base: '/themes/base/epiceditor.css',
+          preview: '/themes/preview/preview-dark.css',
+          editor: '/themes/editor/epic-dark.css'
+        }
+      };
+
+      var editor = new EpicEditor(opts);
+
+      if (!Session.get("btnStatus")) {
+        console.log('button is showing answer');
+        Session.set("btnStatus", true);
+        // answerButton.innerText = 'Cancel';
+        answerButton.innerText = 'Cancel' ;
+        $('.answer-box').after('<div id="epiceditor"></div>');
+        $('#epiceditor').addClass('epiceditors');
+        editor.load();
+      } else {
+        console.log('button is showing cancel');
+        Session.set("btnStatus", false);
+        answerButton.innerText = 'Answer' ;
+        $('#epiceditor').removeClass('epiceditors');
+        editor.unload();
+      }
     }
-  })
+  });
 
   Template.ask.events({
 
@@ -49,10 +89,10 @@ if (Meteor.isClient) {
        var questionLong  = $('#question-long').val();
 
        var id = Faqs.insert({
-         q: questionShort, 
+         q: questionShort,
          answers: [ {
-                      answer: questionLong 
-                    } 
+                      answer: questionLong
+                    }
                   ],
          created_at: Date.now()
        });
@@ -91,7 +131,7 @@ if (Meteor.isClient) {
       }
       $(".alert").alert('close');
     }
-  })
+  });
 
   Meteor.Router.add({
     '/'         : 'home',
