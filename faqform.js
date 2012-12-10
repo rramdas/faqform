@@ -7,8 +7,7 @@ Session.set('question_id', null);
 
 if (Meteor.isClient) {
 
-
-  Session.set("btnStatus", false);
+  Session.set("buttonStatus", false);
 
   Meteor.autosubscribe(function () {
     Meteor.subscribe('faqs');
@@ -40,10 +39,8 @@ if (Meteor.isClient) {
 
       e.preventDefault();
 
-      var answerButton = document.getElementById('showEditor');
-
       var opts = {
-        container: 'epiceditor',
+        container: 'epic1',
         basePath: '/client/epiceditor',
         parser: marked,
         file : {
@@ -57,25 +54,24 @@ if (Meteor.isClient) {
           preview: '/themes/preview/preview-dark.css',
           editor: '/themes/editor/epic-dark.css'
         }
-      };
+      },
+      editor = new EpicEditor(opts);
+      ;
 
-      var editor = new EpicEditor(opts);
+      editor.load();
 
-      if (!Session.get("btnStatus")) {
-        console.log('button is showing answer');
-        Session.set("btnStatus", true);
-        // answerButton.innerText = 'Cancel';
-        answerButton.innerText = 'Cancel' ;
-        $('.answer-box').after('<div id="epiceditor"></div>');
-        $('#epiceditor').addClass('epiceditors');
-        editor.load();
-      } else {
-        console.log('button is showing cancel');
-        Session.set("btnStatus", false);
-        answerButton.innerText = 'Answer' ;
-        $('#epiceditor').removeClass('epiceditors');
-        editor.unload();
-      }
+
+      // if (!Session.get("btnStatus")) {
+      //   Session.set("buttonStatus", true);
+      //   answerButton.innerText = 'Cancel' ;
+      //   $('#epiceditor').addClass('epiceditors');
+      //   editor.load();
+      // } else {
+      //   Session.set("buttonStatus", false);
+      //   answerButton.innerText = 'Answer' ;
+      //   $('#epiceditor').removeClass('epiceditors');
+      //   editor.unload();
+      // }
     }
   });
 
