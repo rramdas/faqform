@@ -192,19 +192,19 @@ if (Meteor.isServer) {
             [
             
                 {  
-                   user: "rramdas@gmail.com" , 
+                   user: "user@gmail.com" , 
                    answer: "Many Congregational churches claim their descent from a family of Protestant denominations formed on a theory of union published by the theologian Robert Browne in 1592. These arose from the Nonconformist religious movement during the Puritan reformation of the Church of England. In Great Britain, the early congregationalists were called separatists or independents to distinguish them from the similarly Calvinistic Presbyterians. Some congregationalists in Britain still call themselves Independent." , 
                    created_at: Date.now()
                 },
 
                 {  
-                   user: "rramdas2@gmail.com" , 
+                   user: "user2@gmail.com" , 
                    answer: "Anna (killed 653 or 654) was King of East Anglia from the early 640s until his death. Little is known of Anna's life or his reign, as few records have survived from this period. He was one of the three sons of Eni who ruled East Anglia, succeeding after Ecgric was killed in battle by Penda of Mercia. Anna was praised by Bede for his devotion to Christianity and was renowned for the saintliness of his family. In 645 Cenwalh of Wessex was driven from his kingdom by Penda and, due to Anna's influence, he was converted to Christianity while living as an exile at the East Anglian court. Upon his return from exile, Cenwalh re-established Christianity in his own kingdom and the people of Wessex then remained firmly Christian. Following the attack in 651 by Penda on the monastery at Cnobheresburg, which Anna richly endowed, he was forced by Penda to flee into exile. He may have travelled to the western kingdom of the Magonsæte and returned in about 653, but East Anglia was attacked again by Penda soon afterwards and at the Battle of Bulcamp the East Anglian army, led by Anna, was defeated by the Mercians, and Anna and his son Jurmin were both killed. He was succeeded by his brother, Aethelhere" , 
                    created_at: Date.now()
                 },
 
                 {  
-                   user: "rramdas3@gmail.com" , 
+                   user: "user3@gmail.com" , 
                    answer: "Perl is a high-level, general-purpose, interpreted, dynamic programming language. Though Perl is not officially an acronym,[4] there are various backronyms in use, such as: Practical Extraction and Reporting Language.[5] Perl was originally developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier.[6] Since then, it has undergone many changes and revisions. The latest major stable revision is 5.16, released in May 2012. Perl 6 is a complete redesign of the language, announced in 2000 and still under active development as of 2012." ,
                    created_at: Date.now()
                 },
